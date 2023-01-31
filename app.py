@@ -61,7 +61,7 @@ def random_quote():
     return random.choice(quotes)
 
 
-# функция к 1 практике по данной рекомендации:
+# функция к 1 практике
 
 @app.route("/quotes_numbers")
 def get_quote_by_numbers():
