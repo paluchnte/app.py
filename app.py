@@ -64,6 +64,8 @@ def random_quote():
 # функция к 1 практике
 
 @app.route("/quotes_numbers")
+# TODO: сделать получение нового id отдельной функцией - хорошая идея. А вот добавлять эту функцию в общее API - плохая.
+#   лучше убрать декоратор @app.route с этой функции, т.к. это просто вспомогательная функция.
 def get_quote_by_numbers():
     last_id = quotes[-1]["id"]
     return str(last_id + 1)
@@ -106,6 +108,7 @@ def create_quote():
 # фильтр по заданному рейтингу или автору в одной функции
 @app.route("/quotes/filter", methods=['GET'])
 def filter():
+    # TODO: очень плохое именование переменных. Подберите более информативные имена для переменных: i, k, v    
     res = []
     args = request.args
     for i in quotes:
@@ -136,6 +139,7 @@ def filter2():
 
 # удаление элемента
 @app.route("/quotes/<int:id>", methods=['DELETE'])
+# TODO: удаление цитат реализовано не верно. Внимательно протестируйте на цитатах с раздичными id
 def delete(id):
     for quote in quotes:
         if quote['id'] == id:
